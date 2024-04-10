@@ -12,6 +12,9 @@ These instructions will get you a copy of the project up and running on your loc
 - Docker
 - Docker Compose
 
+### Additional Tools
+We recommend installing [Postman](https://www.postman.com/)
+
 ### Installation
 
 1. Clone the repository:

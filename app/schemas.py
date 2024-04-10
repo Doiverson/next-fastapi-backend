@@ -8,8 +8,21 @@ class PostBase(BaseModel):
 
     class Config:
         from_attributes = True
+        json_schema_extra = {
+            "example": {
+                "id": 1,
+                "title": "Example Title",
+                "content": "Example Content",
+            }
+        }
 
 
-class CreatePost(PostBase):
+class CreatePost(BaseModel):
+    title: str
+    content: str
+
     class Config:
         from_attributes = True
+        json_schema_extra = {
+            "example": {"title": "Example Title", "content": "Example Content"}
+        }

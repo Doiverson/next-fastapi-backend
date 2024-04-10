@@ -11,8 +11,8 @@ router = APIRouter(
 )
 
 
-@router.get("/", response_model=List[schemas.CreatePost])
-def test_posts(db: Session = Depends(get_db)):
+@router.get("/", response_model=List[schemas.PostBase])
+def get_posts(db: Session = Depends(get_db)):
     posts = db.query(models.Post).all()
     return posts
 
