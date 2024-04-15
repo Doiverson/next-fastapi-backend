@@ -1,11 +1,15 @@
-from sqlalchemy import Column, Integer, String, TIMESTAMP, Boolean, text
-from .database import Base
+from sqlalchemy import Column, String, TIMESTAMP, Boolean, text
+from sqlalchemy.dialects.postgresql import UUID
+from ..database import Base
+import uuid
 
 
 class Post(Base):
     __tablename__ = "posts"
 
-    id = Column(Integer, primary_key=True, nullable=False)
+    id = Column(
+        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, nullable=False
+    )
     title = Column(String, index=True)
     content = Column(String, nullable=False)
     published = Column(Boolean, server_default="TRUE")

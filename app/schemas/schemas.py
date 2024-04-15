@@ -1,8 +1,9 @@
 from pydantic import BaseModel
+from uuid import UUID
 
 
 class PostBase(BaseModel):
-    id: int
+    id: UUID
     title: str
     content: str
 

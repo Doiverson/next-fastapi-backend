@@ -2,6 +2,7 @@ version: '3'
 
 services:
     web:
+        container_name: fastapi
         build:
             context: .
             dockerfile: Dockerfile
@@ -14,6 +15,7 @@ services:
         ports:
             - '8000:80'
     db:
+        container_name: fastapi-postgres
         image: postgres:15-alpine
         volumes:
             - postgres_data:/var/lib/postgresql/data
@@ -23,5 +25,19 @@ services:
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: dbmaster
             POSTGRES_DB: postgres
+    pgadmin:
+        container_name: fastapi-pgadmin
+        image: dpage/pgadmin4:8.4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: admin@example.com
+            PGADMIN_DEFAULT_PASSWORD: admin123
+            PGADMIN_LISTEN_PORT: 5433
+            PGADMIN_CONFIG_SERVER_MODE: 'False'
+            PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
+            PGADMIN_CONFIG_UPGRADE_CHECK_ENABLED: 'False'
+        ports:
+            - '5433:5433'
+        depends_on:
+            - db
 volumes:
     postgres_data:
