@@ -27,9 +27,8 @@ We recommend installing [Postman](https://www.postman.com/)
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/username/repository.git
+    git clone https://github.com/Doiverson/next-fastapi-backend.git
     ```
-    Replace `https://github.com/username/repository.git` with the URL of your repository.
 
 2. Navigate to the `backend` directory:
     ```bash
@@ -42,6 +41,7 @@ We recommend installing [Postman](https://www.postman.com/)
     ```
 
 The application should now be running at `http://localhost:8000`.
+pgAdmin should now be running at `http://localhost:5433`
 
 ## API Documentation
 
