@@ -40,7 +40,7 @@ We recommend installing [Postman](https://www.postman.com/)
     docker-compose up --build
     ```
 
-The application should now be running at `http://localhost:8000`.
+The application should now be running at `http://localhost:8000`. </br>
 pgAdmin should now be running at `http://localhost:5433`
 
 ## API Documentation
