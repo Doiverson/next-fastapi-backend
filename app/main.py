@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .models import models
 from .database import engine
-from .routers import posts
+from .routers import posts, details
 
 
 models.Base.metadata.create_all(bind=engine)
@@ -29,5 +29,6 @@ async def root():
 
 
 app.include_router(posts.router)
+app.include_router(details.router)
 
 # https://medium.com/@kevinkoech265/dockerizing-fastapi-and-postgresql-effortless-containerization-a-step-by-step-guide-68b962c3e7eb
