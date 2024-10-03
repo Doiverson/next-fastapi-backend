@@ -21,11 +21,18 @@ class PostBase(BaseModel):
 class CreatePost(BaseModel):
     title: str
     content: str
+    detail: 'CreateDetail'
 
     class Config:
         from_attributes = True
         json_schema_extra = {
-            "example": {"title": "Example Title", "content": "Example Content"}
+            "example": {
+              "title": "Example Title", 
+              "content": "Example Content",
+              "detail": {
+                "description": "Example Descriptino",
+              }
+            }
         }
 
 
@@ -45,7 +52,6 @@ class DetailBase(BaseModel):
 
 class CreateDetail(BaseModel):
     description: str
-    post_id: UUID
 
     class Config:
         from_attributes = True
