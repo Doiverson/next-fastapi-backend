@@ -12,7 +12,7 @@ class Post(Base):
         UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, nullable=False
     )
     title = Column(String, index=True)
-    content = Column(String, nullable=False)
+    description = Column(String, nullable=False)
     details = relationship("Detail", back_populates="post")  # Corrected relationship
 
 
@@ -22,6 +22,7 @@ class Detail(Base):
     id = Column(
         UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, nullable=False
     )
-    description = Column(String, nullable=False)
+    title = Column(String, nullable=False)
+    description = Column(String)
     post_id = Column(UUID(as_uuid=True), ForeignKey("posts.id"))
     post = relationship("Post", back_populates="details")

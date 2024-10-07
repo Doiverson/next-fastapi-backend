@@ -32,12 +32,15 @@ def create_post(post_create: schemas.CreatePost, db: Session = Depends(get_db)):
         db.add(new_post)
         db.commit()
         db.refresh(new_post)
-
-        if post_create.detail:
-            new_detail = models.Detail(**post_create.detail.dict(), post_id=new_post.id)
-            db.add(new_detail)
-            db.commit()
-            db.refresh(new_detail)
+        
+        new_detail = models.Detail(
+              post_id=new_post.id, 
+              title=post_create.title, 
+              description=post_create.description
+            )
+        db.add(new_detail)
+        db.commit()
+        db.refresh(new_detail)            
 
         return post_create  # Return the newly created post
 
